@@ -31,16 +31,16 @@
 #include "SdVolume.h"
 //------------------------------------------------------------------------------
 /**
- * \struct fpos_t
+ * \struct __fpos_t
  * \brief internal type for istream
  * do not use in user apps
  */
-struct fpos_t {
+struct __fpos_t {
   /** stream position */
   uint32_t position;
   /** cluster for position */
   uint32_t cluster;
-  fpos_t() : position(0), cluster(0) {}
+  __fpos_t() : position(0), cluster(0) {}
 };
 union datetime_u
 {
@@ -205,11 +205,11 @@ class SdBaseFile {
   /** get position for streams
    * \param[out] pos struct to receive position
    */
-  void getpos(fpos_t* pos);
+  void getpos(__fpos_t* pos);
   /** set position for streams
    * \param[out] pos struct with value for new position
    */
-  void setpos(fpos_t* pos);
+  void setpos(__fpos_t* pos);
   //----------------------------------------------------------------------------
   bool close();
   bool contiguousRange(uint32_t* bgnBlock, uint32_t* endBlock);
