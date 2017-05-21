@@ -89,6 +89,8 @@ volatile signed char count_direction[NUM_AXIS] = { 1, 1, 1, 1};
 //=============================functions         ============================
 //===========================================================================
 
+extern void lcd_sdcard_pause_move();
+
 #define CHECK_ENDSTOPS  if(check_endstops)
 
 // intRes = intIn1 * intIn2 >> 16
@@ -229,6 +231,18 @@ void enable_endstops(bool check)
 //  first block->accelerate_until step_events_completed, then keeps going at constant speed until
 //  step_events_completed reaches block->decelerate_after after which it decelerates until the trapezoid generator is reset.
 //  The slope of acceleration is calculated with the leib ramp alghorithm.
+//
+void check_filament()
+{
+  if (READ(FILAMENT_PIN) == LOW && card.sdprinting)  //must use READ()
+  {
+    lcd_sdcard_pause_move();
+    SERIAL_ECHO_START;
+    SERIAL_ECHOLNPGM("if FILAMENT_PIN Low");
+  }
+  //SERIAL_ECHO_START;
+  //SERIAL_ECHOLNPGM("check_filament");
+}
 
 void st_wake_up() {
   //  TCNT1 = 0;

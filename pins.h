@@ -470,6 +470,7 @@
   #endif
 
   #ifdef ULTRA_LCD
+    #define FILAMENT_PIN       14
   
     #ifdef NEWPANEL    
       #define LCD0 63 

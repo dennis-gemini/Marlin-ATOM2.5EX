@@ -256,7 +256,7 @@ static void lcd_sdcard_pause()
 	LCD_MESSAGEPGM(MSG_PAUSED);
 }
 
-static void lcd_sdcard_pause_move()
+void lcd_sdcard_pause_move()
 {
     pauseMoved = true;
     card.pauseSDPrint();
