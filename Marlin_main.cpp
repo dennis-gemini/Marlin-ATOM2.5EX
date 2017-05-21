@@ -408,6 +408,16 @@ void setup_killpin()
   #endif
 }
 
+void setup_filamentpin()
+{
+  #if defined(FILAMENT_PIN) && FILAMENT_PIN > -1
+    pinMode(FILAMENT_PIN,INPUT);
+    WRITE(FILAMENT_PIN,HIGH);
+    SERIAL_ECHO_START;
+    SERIAL_ECHOLNPGM("setup_filamentpin");
+  #endif
+}
+
 void setup_laserpin() 
 { 
    #if defined(LASER_PIN) && LASER_PIN > -1
@@ -521,6 +531,7 @@ void setup()
   watchdog_init();
   st_init();    // Initialize stepper, this enables interrupts!
   setup_photpin();
+  setup_filamentpin();
   setup_laserpin();
   servo_init();
 
@@ -584,6 +595,7 @@ void loop()
 	manage_heater();
 	manage_inactivity();
 	checkHitEndstops();
+	check_filament();
 	lcd_update();
 }
 FORCE_INLINE void finished_print()
