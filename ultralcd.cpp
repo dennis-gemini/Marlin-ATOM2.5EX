@@ -714,6 +714,11 @@ static void lcd_filaments_menu()
 		MENU_ITEM(function, MSG_UNLOAD_FILAMENT_E1, unload_filament_e1);
 	}
 	MENU_ITEM(function, MSG_COOLDOWN, lcd_cooldown);
+	if (atom_version == 2)
+	{
+		MENU_ITEM(gcode, MSG_USE_E0, PSTR("T0"));
+		MENU_ITEM(gcode, MSG_USE_E1, PSTR("T1"));
+	}
 	END_MENU();
 }
 static void lcd_control_menu()
