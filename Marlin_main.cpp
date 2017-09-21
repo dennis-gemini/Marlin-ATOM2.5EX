@@ -1627,8 +1627,12 @@ FORCE_INLINE void process_mcode(int value)
 		}
 		if (wait_heating)
 		{
-			LCD_MESSAGEPGM(MSG_NOZZLE_HEATING_COMPLETE);
-			starttime = millis();
+			if (target_direction) {
+				LCD_MESSAGEPGM(MSG_NOZZLE_HEATING_COMPLETE);
+				starttime = millis();
+			} else {
+				LCD_MESSAGEPGM(MSG_NOZZLE_COOLING_COMPLETE);
+			}
 		}
 		previous_millis_cmd = millis();
 		}

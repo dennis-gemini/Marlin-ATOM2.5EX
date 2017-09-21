@@ -183,6 +183,7 @@
 	#define MSG_M109_INVALID_EXTRUDER "M109 Invalid Extruder "
 	#define MSG_NOZZLE_HEATING "Nozzle Heating..."
 	#define MSG_NOZZLE_HEATING_COMPLETE "Nozzle Heating Done."
+	#define MSG_NOZZLE_COOLING_COMPLETE "Nozzle Cooling Done."
 	#define MSG_PRINTING "Printing..."
 	#define MSG_BED_HEATING "Bed Heating."
 	#define MSG_BED_DONE "Bed Done."
